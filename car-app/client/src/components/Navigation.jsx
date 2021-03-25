@@ -4,10 +4,8 @@ import { Link } from 'react-router-dom';
 function Navigation(){
   return (
     <>
-    <head>
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet" />
-    </head>
       <div className="nav-div">
         <h1 className="nav-header">
           Car Trader

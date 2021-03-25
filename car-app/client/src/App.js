@@ -12,19 +12,23 @@ import Post from './pages/Post';
 //Imports the website components.
 import Navigation from './components/Navigation';
 
-function App(){
-  return(
-    <Router>
-      <div className="App">
-        <Navigation />
-        <Switch>
-          <Route path="/login" component={Login}/>
-          <Route path="/post" component={Post}/>
-          <Route path="/" component={Listings} />
-        </Switch>
-      </div>
-    </Router>
-  );
+class App extends Component{
+  
+  render(){
+    return(
+      <Router>
+        <div className="App">
+          <Navigation />
+          <Switch>
+            <Route path="/login" component={Login}/>
+            <Route path="/post" component={Post}/>
+            <Route path="/" component={Listings} />
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
+
 }
 
 export default App;
