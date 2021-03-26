@@ -3,7 +3,7 @@ h2{
   padding: 16px;
   color: white;
 }
-input[type=text]{
+input[type=text], input[type=password]{
   padding: 6px;
   border-radius: 4px;
   border-style: none;
@@ -29,11 +29,11 @@ input[type=submit]:hover{
   justify-content: center;
 }
 .basic-div{
+  padding: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  max-width: 480px;
+  border-radius: 12px;
   background-color: midnightblue;
   box-shadow: 0px 7px 13px -8px #000000;
 }
