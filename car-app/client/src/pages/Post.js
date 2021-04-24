@@ -1,13 +1,152 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function Post() {
-    return (
-        <>
-        <h1>
-            Posting Page
-        </h1>
-        </>
-    );
+class Post extends Component {
+
+    state = {
+        title: "",
+        description: "",
+        price: "",
+        condition: "",
+        kilometers: "",
+        colour: "",
+        notes: "",
+    }
+
+    handleCreatePost = async e => {
+        e.preventDefault();
+
+        const response = await fetch('/api/createpost', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: this.state.title,
+                description: this.state.description,
+                price: this.state.price,
+                condition: this.state.condition,
+                kilometers: this.state.kilometers,
+                colour: this.state.colour
+            }),
+        });
+        const body = await response.text();
+        this.setState({ reponse: body });
+    }
+
+
+    render() {
+        return (
+            <div className="flex-div">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div className="flex-div">
+                                    <br></br><br></br>
+                                    <h1>
+                                        Posting Page
+                                    </h1>
+                                </div>
+                            </td>
+                        </tr>
+                        <hr></hr><br></br>
+                        <tr>
+                            <td>
+                                <div className="basic-div">
+                                    <form onSubmit={this.handleCreatePost}>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <input id="imageInput" type="image" />
+                                                </td>
+                                                <td>
+                                                    <tr>
+                                                        <td>
+                                                            <input id="titleInput" type="text" placeholder="Title..." onChange={e => this.setState({ title: e.target.value })} />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input id="descriptionInput" type="text" placeholder="Description..." onChange={e => this.setState({ description: e.target.value })} />
+                                                        </td>
+                                                    </tr>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2>Price: </h2>
+                                                </td>
+                                                <td>
+                                                    <input id="priceInput" type="number" placeholder="(ex. 5000)" min="0" onChange={e => this.setState({ price: e.target.value })} />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2>Condition: </h2>
+                                                </td>
+                                                <td>
+                                                    <input id="conditionInput" list="listCondition" placeholder="Select" onChange={e => this.setState({ condition: e.target.value })} />
+                                                    <datalist id="listCondition">
+                                                        <option value="New" />
+                                                        <option value="Used - Great" />
+                                                        <option value="Used - Good" />
+                                                        <option value="Used - Bad" />
+                                                    </datalist>
+                                                    
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2>Kilometers: </h2>
+                                                </td>
+                                                <td>
+                                                    <input id="kilometerInput" type="number" placeholder="(ex. 5000)" min="0" onChange={e => this.setState({ kilometers: e.target.value })} />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2>Colour: </h2>
+                                                </td>
+                                                <td>
+                                                    <input id="colourInput" list="listColour" placeholder="Select" onChange={e => this.setState({ colour: e.target.value })} />
+                                                    <datalist id="listColour">
+                                                        <option value="White" />
+                                                        <option value="Black" />
+                                                        <option value="Grey" />
+                                                        <option value="Silver" />
+                                                        <option value="Blue" />
+                                                        <option value="Red" />
+                                                        <option value="Green" />
+                                                        <option value="Beige" />
+                                                    </datalist>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2>Notes:</h2>
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <input id="notesInput" type="text" placeholder="Extra notes..." onChange={e => this.setState({ notes: e.target.value })} />
+                                            </tr>
+                                            <tr>
+                                                <input id="buttonSubmit" type="submit" value="Post"></input>
+                                            </tr>
+                                        </table>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>              
+
+                
+            </div>
+        );
+    }
 }
 
 export default Post;
