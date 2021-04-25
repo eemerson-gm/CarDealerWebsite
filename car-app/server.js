@@ -81,5 +81,17 @@ app.post('/api/signup', (req, res) => {
 
 });
 
+/*connect car api*/
+/*******************************************************************/
+var Task = require('./api/models/car'),
+    mongoose = require('mongoose');
+// mongoose instance connection url connection
+mongoose.Promise = global.Promise;
+mongoose.connect(url); 
+
+const cars = require('./api/routes/carRoutes');
+cars(app);
+/*******************************************************************/
+
 //Starts the NodeJS server.
 app.listen(port, () => console.log(`Listening on port ${port}`));
