@@ -10,12 +10,13 @@ class Post extends Component {
         kilometers: "",
         colour: "",
         notes: "",
+        response: ""
     }
 
     handleCreatePost = async e => {
         e.preventDefault();
 
-        const response = await fetch('/api/createpost', {
+        const response = await fetch('/api/cars/listing/new', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

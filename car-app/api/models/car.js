@@ -15,10 +15,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var carSchema = new Schema({
-  _id:{
-    type: String,
-    required: false
-  },
   title: {
     type: String,
     required: 'the title for the listing is required'
@@ -35,14 +31,6 @@ var carSchema = new Schema({
     type: Number,
     required: false
   },
-  make: {
-    type: String,
-    required: 'the car make is required'
-  },
-  model: {
-    type: String,
-    required: 'the model type is required'
-  },
   colour: {
     type: String,
     required: false
@@ -51,22 +39,14 @@ var carSchema = new Schema({
     type: String,
     required: false
   },
-  contact: {
-    type: String,
-    required: 'the contact info is required'
-  },
   year:{
     type: Number,
     required: 'the year is required'
   },
-  km:{
+  kilometers:{
     type: Number,
     required: 'the number of kilometres is required'
   },
-  options: [{
-      type: String,
-      required: false
-  }]
 }, { versionKey: false });
 
 module.exports = mongoose.model('vehicles', carSchema);
