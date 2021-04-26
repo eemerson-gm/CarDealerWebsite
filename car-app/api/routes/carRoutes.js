@@ -14,29 +14,29 @@ module.exports = function(app) {
   var carList = require('../controllers/carController');
   
   /*get all listings*/
-  app.route('/cars')
+  app.route('/api/cars')
     .get(carList.list_all_cars);
 
   /*get all cars of a specific make*/
-  app.route('/cars/:make')
+  app.route('/api/cars/:make')
     .get(carList.list_all_cars_of_make);
 
   /*get all cars of a specific make and model*/
-  app.route('/cars/:make/:model')
+  app.route('/api/cars/:make/:model')
     .get(carList.list_all_car_of_model);
 
   /*get all cars with a specific option*/
-  app.route('/cars/options/:tag')
+  app.route('/api/cars/options/:tag')
     .get(carList.list_all_cars_with_option);
 
   /*get/update/delete a specific car listing*/
-  app.route('/cars/listing/:id')
+  app.route('/api/cars/listing/:id')
     .get(carList.get_listing)
     .put(carList.update_listing)
     .delete(carList.delete_listing);
 
   /*create a new listing cor a car*/
-  app.route('/cars/listing/new')
+  app.route('/api/cars/listing/new')
     .post(carList.new_listing);
 
 };
