@@ -61,23 +61,12 @@ class Post extends Component {
                     <tbody>
                         <tr>
                             <td>
-                                <div className="flex-div">
-                                    <br></br><br></br>
-                                    <h1>
-                                        Posting Page
-                                    </h1>
-                                </div>
-                            </td>
-                        </tr>
-                        <hr></hr><br></br>
-                        <tr>
-                            <td>
                                 <div className="basic-div">
                                     <form onSubmit={this.handleCreatePost}>
                                         <table>
                                             <tr>
                                                 <td>
-                                                    <input id="imageInput" type="image" />
+                                                    <h2>Title:</h2>
                                                 </td>
                                                 <td>
                                                     <tr>

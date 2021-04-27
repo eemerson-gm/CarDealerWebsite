@@ -53,18 +53,87 @@ class Listings extends React.Component {
               notes } = user;
             return (
               <div key={title}>
-                <p>{description}</p>
-                <p>Condition: {condition}</p>
-                <p>Make: {make}</p>
-                <p>Model: {model}</p>
-                <p>Year: {year}</p>
-                <p>Colour: {colour}</p>
-                <p>Options: {options}</p>
-                <p>KM: {kilometres}</p>
-                <p>Notes: {notes}</p>
-                <p>Price: {price}</p>
-                <p>Contact: {contact}</p>
-                <hr />
+                <div className="basic-div">
+                  <table className="list">
+                    <tbody>
+                      <tr>
+                        <td>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <h1>{title}</h1>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <h2>{description}</h2>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <h2>Price: ${price}</h2>
+                                </td>
+                                <td>
+                                  <h2>Condition: {condition}</h2>
+                                </td>
+                                <td>
+                                  <h2>Make: {make}</h2>
+                                </td>
+                                <td>
+                                  <h2>Model: {model}</h2>
+                                </td>
+                                <td>
+                                  <h2>Year: {year}</h2>
+                                </td>
+                                <td>
+                                  <h2>Colour: {colour}</h2>
+                                </td>
+                                <td>
+                                  <h2>{kilometres}km</h2>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <a href={"mailto:" + contact}>
+                                    <h2>Contact: {contact}</h2>
+                                  </a>
+                                </td>
+                                <td>
+                                  <h2>Notes: {notes}</h2>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             );
           })
