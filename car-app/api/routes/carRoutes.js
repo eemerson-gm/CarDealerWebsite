@@ -39,4 +39,8 @@ module.exports = function(app) {
   app.route('/api/cars/listing/new')
     .post(carList.new_listing);
 
+  /*get listings for a user*/
+  app.route('/api/cars/listing/user/:name')
+    .get(carList.get_user_listing)
+
 };

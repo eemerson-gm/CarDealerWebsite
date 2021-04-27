@@ -25,9 +25,18 @@ exports.list_all_cars = function(req, res) {
   });
 };
 
+/*get all user car*/
+exports.get_user_listing = function(req, res) {
+  car.find({listingOwner: req.params.name}, function(err, car) {
+    if (err)
+      res.send(err);
+    res.json(car);
+  });
+};
+
 /*get all cars of specific make*/
 exports.list_all_cars_of_make = function(req, res) {
-  car.findOne({make: req.params.make}, function(err, car) {
+  car.find({make: req.params.make}, function(err, car) {
     if (err)
       res.send(err);
     res.json(car);
@@ -36,7 +45,7 @@ exports.list_all_cars_of_make = function(req, res) {
 
 /*get all cars of specific make and model*/
 exports.list_all_car_of_model = function(req, res) {
-  car.findOne({make: req.params.make, model: req.params.model}, function(err, car) {
+  car.find({make: req.params.make, model: req.params.model}, function(err, car) {
     if (err)
       res.send(err);
     res.json(car);
