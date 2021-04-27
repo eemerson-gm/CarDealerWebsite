@@ -43,10 +43,26 @@ var carSchema = new Schema({
     type: Number,
     required: 'the year is required'
   },
-  kilometers:{
+  kilometres:{
     type: Number,
     required: 'the number of kilometres is required'
   },
+  make:{
+    type: String,
+    required: 'the make is required'
+  },
+  model: {
+    type: String,
+    required: 'the model is required'
+  },
+  options: [{
+    type: String,
+    required: false
+  }],
+  contact: {
+    type: String,
+    required: true
+  }
 }, { versionKey: false });
 
 module.exports = mongoose.model('vehicles', carSchema);

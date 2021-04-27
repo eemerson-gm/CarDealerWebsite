@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import { useHistory } from 'react-router-dom';
 
 class Post extends Component {
 
     state = {
         title: "",
         description: "",
-        price: "",
         condition: "",
-        kilometers: "",
+        make: "",
+        model: "",
+        year: "",
         colour: "",
+        options: "",
+        kilometres: "",
+        price: "",
+        contact: "",
         notes: "",
         response: ""
     }
@@ -24,14 +30,39 @@ class Post extends Component {
             body: JSON.stringify({
                 title: this.state.title,
                 description: this.state.description,
-                price: this.state.price,
                 condition: this.state.condition,
-                kilometers: this.state.kilometers,
-                colour: this.state.colour
+                make: this.state.make,
+                model: this.state.model,
+                year: this.state.year,
+                colour: this.state.colour,
+                options: this.state.options,
+                kilometres: this.state.kilometres,
+                price: this.state.price,
+                contact: this.state.contact,
+                notes: this.state.notes,
+                response: ""
             }),
         });
         const body = await response.text();
         this.setState({ reponse: body });
+        var obj = {
+            "title": this.state.title,
+            "description": this.state.description,
+            "condition": this.state.condition,
+            "make": this.state.make,
+            "model": this.state.model,
+            "year": this.state.year,
+            "colour": this.state.colour,
+            "options": this.state.options,
+            "kilometres": this.state.kilometres,
+            "price": this.state.price,
+            "contact": this.state.contact,
+            "notes": this.state.notes
+        }
+        if (!body.includes("\"errors\"")) {
+            this.props.history.push('/')
+        }
+
     }
 
 
@@ -93,15 +124,39 @@ class Post extends Component {
                                                         <option value="Used - Good" />
                                                         <option value="Used - Bad" />
                                                     </datalist>
-                                                    
+
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    <h2>Kilometers: </h2>
+                                                    <h2>Make: </h2>
                                                 </td>
                                                 <td>
-                                                    <input id="kilometerInput" type="number" placeholder="(ex. 5000)" min="0" onChange={e => this.setState({ kilometers: e.target.value })} />
+                                                    <input id="makeInput" type="text" placeholder="(ex. Honda, Toyota)" onChange={e => this.setState({ make: e.target.value })} />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2>Model: </h2>
+                                                </td>
+                                                <td>
+                                                    <input id="modelInput" type="text" placeholder="(ex. Accord, Corolla)" onChange={e => this.setState({ model: e.target.value })} />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2>Year: </h2>
+                                                </td>
+                                                <td>
+                                                    <input id="yearInput" type="number" placeholder="(ex. 1997)" min="0" onChange={e => this.setState({ year: e.target.value })} />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2>Kilometres: </h2>
+                                                </td>
+                                                <td>
+                                                    <input id="kilometreInput" type="number" placeholder="(ex. 5000)" min="0" onChange={e => this.setState({ kilometres: e.target.value })} />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -124,6 +179,22 @@ class Post extends Component {
                                             </tr>
                                             <tr>
                                                 <td>
+                                                    <h2>Options: </h2>
+                                                </td>
+                                                <td>
+                                                    <input id="optionInput" type="text" placeholder="(ex. Sunroof, AC)" onChange={e => this.setState({ options: e.target.value })} />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <h2>Contact: </h2>
+                                                </td>
+                                                <td>
+                                                    <input id="contactInput" type="text" placeholder="(ex. email, phonenumber)" onChange={e => this.setState({ contact: e.target.value })} />
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
                                                     <h2>Notes:</h2>
                                                 </td>
                                                 <td>
@@ -142,9 +213,9 @@ class Post extends Component {
                             </td>
                         </tr>
                     </tbody>
-                </table>              
+                </table>
 
-                
+
             </div>
         );
     }
