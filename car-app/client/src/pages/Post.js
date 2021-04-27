@@ -40,25 +40,13 @@ class Post extends Component {
                 price: this.state.price,
                 contact: this.state.contact,
                 notes: this.state.notes,
+                listingOwner: localStorage.getItem('username'),
                 response: ""
             }),
         });
         const body = await response.text();
         this.setState({ reponse: body });
-        var obj = {
-            "title": this.state.title,
-            "description": this.state.description,
-            "condition": this.state.condition,
-            "make": this.state.make,
-            "model": this.state.model,
-            "year": this.state.year,
-            "colour": this.state.colour,
-            "options": this.state.options,
-            "kilometres": this.state.kilometres,
-            "price": this.state.price,
-            "contact": this.state.contact,
-            "notes": this.state.notes
-        }
+
         if (!body.includes("\"errors\"")) {
             this.props.history.push('/')
         }

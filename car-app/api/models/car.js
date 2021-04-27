@@ -62,6 +62,10 @@ var carSchema = new Schema({
   contact: {
     type: String,
     required: true
+  },
+  listingOwner: {
+    type: String,
+    required: true
   }
 }, { versionKey: false });
 

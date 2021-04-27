@@ -25,6 +25,11 @@ class Login extends Component{
         });
         const body = await response.text();
         this.setState({ response: body });
+        if(body === "Passwords are equal!"){
+            localStorage.setItem('username', this.state.username);
+            this.props.history.push('/');
+        }
+        
     }
 
     handleSubmitSignup = async e => {
@@ -44,6 +49,8 @@ class Login extends Component{
         });
         const body = await response.text();
         this.setState({ response: body });
+        localStorage.setItem('username', this.state.username);
+        this.props.history.push('/');
     }
 
     render(){
